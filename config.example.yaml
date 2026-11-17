@@ -1,0 +1,63 @@
+# Example settings. Copy this file to config.yaml and edit it.
+# config.yaml is git-ignored, so your own values stay on your machine.
+#
+# All keys below are required. Lists may be empty ([]).
+# Keywords are matched as lowercase substrings. Quote an entry if it needs
+# leading or trailing spaces, e.g. " qa ".
+
+# Minimum annual salary sent to both APIs.
+min_salary: 60000
+
+# Centre of the local searches, and the search radius around it.
+adzuna:
+  where: "Springfield, IL"
+usajobs:
+  location_name: "Springfield, IL"
+radius_miles: 25
+
+# Keywords to search for. Each entry is one search.
+searches:
+  adzuna_local:
+    - "office manager"
+    - "technical writer"
+    - "customer support specialist"
+  # The word "remote" is appended to these automatically.
+  adzuna_remote:
+    - "office manager"
+    - "technical writer"
+  # Used for both the local and the nationwide USAJobs searches.
+  usajobs:
+    - "office manager"
+    - "technical writer"
+
+# Result pages fetched per search (Adzuna: 20 rows a page, USAJobs: 25).
+pages:
+  adzuna: 10
+  usajobs: 5
+
+exclude:
+  # Listings in these places are kept but flagged in excluded_location.
+  locations:
+    - "example city"
+  # Listings whose title contains one of these are dropped.
+  title_keywords:
+    - "intern"
+    - "seasonal"
+  # Listings from these employers are dropped.
+  companies:
+    - "example corp"
+  # USAJobs listings in these places are dropped.
+  usajobs_locations:
+    - "example territory"
+
+# keyword: weight. Each keyword found in a listing adds its weight once.
+scoring:
+  high:
+    "spreadsheet": 2
+    "documentation": 2
+  medium:
+    "scheduling": 1
+    "communication": 1
+  negative:
+    "unpaid": -1
+    "commission only": -1

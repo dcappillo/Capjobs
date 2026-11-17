@@ -1,0 +1,8 @@
+.env
+config.yaml
+*.csv
+output/
+logs/
+__pycache__/
+.venv/
+*.zip
